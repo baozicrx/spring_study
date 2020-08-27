@@ -86,7 +86,7 @@ public class StreamApi {
         List<String> addCi = null;
 //        addCi.add("11");
         addCi = Optional.ofNullable(addCi).orElseGet(ArrayList::new);
-        List<String> finalRemoveCi = Optional.ofNullable(removeCi).orElseGet(ArrayList::new);;
+        List<String> finalRemoveCi = Optional.ofNullable(removeCi).orElseGet(ArrayList::new);
         addCi = addCi.stream().filter(e -> !finalRemoveCi.contains(e)).collect(Collectors.toList());
         System.out.println(addCi);
     }
