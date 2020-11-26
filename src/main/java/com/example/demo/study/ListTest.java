@@ -77,5 +77,28 @@ public class ListTest {
 
         List<Object> objectList = new ArrayList<>();
         CollectionUtils.containsAny(objectList, "A", "B");
+
+        //list便利删除/增加元素
+        List<Integer> list5 = Lists.newArrayList();
+//        list5.add(1);
+//        list5.add(2);
+//        list5.add(2);
+//        list5.add(2);
+//        Iterator<Integer> iterator = list5.iterator();
+//        while (iterator.hasNext()) {
+//            Integer integer = iterator.next();
+//            if (integer == 1) {
+//                iterator.remove();
+//            }
+//        }
+//        System.out.println(list5);
+        int size = list5.size();
+        for (int i = 0; i < size; i++) {
+            if (i==1){
+                list5.add(5);
+                size++;
+            }
+        }
+        System.out.println(list5);
     }
 }

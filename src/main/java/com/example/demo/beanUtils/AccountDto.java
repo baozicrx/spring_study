@@ -12,6 +12,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class AccountDto {
     private Integer id;
-    private String createTime;
-    private BigDecimal balance;
+    private Date createTime;
+    private String balance;
 }

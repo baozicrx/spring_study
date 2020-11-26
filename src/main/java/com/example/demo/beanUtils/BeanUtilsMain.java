@@ -26,8 +26,8 @@ public class BeanUtilsMain {
             po.setBalance(BigDecimal.valueOf(i));
             accountList.add(po);
         }
-        testBeanCopier(accountList);
-//        testBeanUtils(accountList);
+//        testBeanCopier(accountList);
+        testBeanUtils(accountList);
         testSpringBeanUtils(accountList);
     }
 

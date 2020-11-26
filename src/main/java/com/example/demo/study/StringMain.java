@@ -1,9 +1,16 @@
 package com.example.demo.study;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
+import com.alibaba.fastjson.JSON;
+import com.example.demo.beanUtils.AccountDto;
 
 /**
  * @Author: crx
@@ -39,6 +46,8 @@ public class StringMain {
 
         StringBuilder builder = new StringBuilder();
         StringBuffer buffer = new StringBuffer();
+        buffer.append("123456");
+        System.out.println("buffer=" + buffer.substring(0, buffer.length() - 1));
 
         String fileName = "123.txt";
         String extension = FilenameUtils.getExtension(fileName);
@@ -52,6 +61,50 @@ public class StringMain {
         System.out.println(Arrays.asList(format).contains(s1));
 
         System.out.println("addTest=" + addTest(1));
+
+        //string转数组
+        String dzdm = "[\"1\",\"2\",\"4\",\"3\",\"5\"]";
+//        dzdm = "[]";
+        dzdm = null;
+//        dzdm = "1,2,3,4";
+//        dzdm = "[" + dzdm + "]";
+        List<String> parseArray = JSON.parseArray(dzdm, String.class);
+//        for (String ss:parseArray){
+//            System.out.println(ss);
+//        }
+//        parseArray.forEach(System.out::println);
+        System.out.println(CollectionUtils.isEmpty(parseArray));
+        System.out.println(parseArray);
+
+        String tag = "{1,2,3}";
+        tag = null;
+//        System.out.println(tag.replace("{", "[").replace("}","]"));
+        System.out.println(StringUtils.containsAny(tag, "{", "}"));
+
+        String aa = null;
+        String replace1 = Optional.ofNullable(aa).orElse(StringUtils.EMPTY).replace("{", "[").replace("}", "]");
+        System.out.println(replace1);
+
+        String aaa = "111111,";
+        aaa = null;
+        System.out.println("removeStart=" + StringUtils.removeStart(aaa, ","));
+        System.out.println("removeEnd=" + StringUtils.removeEnd(aaa, ","));
+
+        //判断实体类是否为空
+        AccountDto accountDto = new AccountDto();
+        System.out.println("accountDto=" + org.springframework.util.StringUtils.isEmpty(accountDto));
+
+        //String转list
+        String b = "b,c";
+        List<String> stringList = Collections.singletonList(b);
+        System.out.println("stringList=" + stringList);
+
+        //for循环拼接字符串
+        String jj = "1";
+        for (int j = 0; j < 10; j++) {
+            jj += i;
+        }
+
     }
 
     public static Integer addTest(Integer i) {

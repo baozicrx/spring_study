@@ -22,5 +22,8 @@ public class OptionalTest {
         System.out.println(integerOptional.get());
         String password = o2.map(String::toUpperCase).get();
         System.out.println(password);
+
+        String ss = null;
+        System.out.println(Optional.ofNullable(ss).get());
     }
 }

@@ -1,6 +1,7 @@
 package com.example.demo.study;
 
 import org.apache.commons.collections.MapUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 
 import java.awt.*;
@@ -10,6 +11,9 @@ import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import com.example.demo.beanUtils.Account;
+import com.example.demo.beanUtils.AccountDto;
 
 /**
  * @Author: crx
@@ -28,6 +32,7 @@ public class StreamApi {
             }
             list.add(map);
         }
+
 
         IntSummaryStatistics num = list.stream().collect(Collectors.summarizingInt(e -> e.get("num")));
         Integer num1 = list.stream().mapToInt(e -> e.get("num")).sum();
@@ -89,5 +94,23 @@ public class StreamApi {
         List<String> finalRemoveCi = Optional.ofNullable(removeCi).orElseGet(ArrayList::new);
         addCi = addCi.stream().filter(e -> !finalRemoveCi.contains(e)).collect(Collectors.toList());
         System.out.println(addCi);
+
+        //foreach空集合
+        List<Account> stringList = new ArrayList<>();
+        stringList.add(new Account());
+        stringList.forEach(e -> {
+            e.setId(1);
+            System.out.println("!11111111");
+        });
+
+        //ifPresent
+        AccountDto accountDto = new AccountDto();
+        accountDto.setBalance("2");
+        Optional.ofNullable(accountDto.getBalance()).map(e -> "0".equals(e) ? "否" : "是")
+                .ifPresent(accountDto::setBalance);
+        System.out.println("accountDto=" + accountDto);
+
+        Integer aaa = null;
+        System.out.println(String.valueOf(aaa));
     }
 }
